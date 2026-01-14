@@ -6,10 +6,14 @@ import streamlit as st
 from openai import OpenAI
 import pandas as pd
 import logging, time, traceback, os
-from langchain.docstore.document import Document
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
+#from langchain.docstore.document import Document
+#from langchain.text_splitter import CharacterTextSplitter
+#from langchain.embeddings.openai import OpenAIEmbeddings
+#from langchain.vectorstores import FAISS
+from langchain_core.documents import Document
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
 
 #Gather API key
 my_api_key = os.getenv("OPENAI_API_KEY")
@@ -178,4 +182,5 @@ with open("chatbot_rag.log") as f:
     #Read last 10 lines of log file
     lines = f.readlines()[-10:]
 #Display last 10 log entries as a code block
+
 st.code("".join(lines))
